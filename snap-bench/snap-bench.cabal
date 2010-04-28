@@ -1,0 +1,27 @@
+Name:                snap-bench
+Version:             0.1
+Synopsis:            Snap Project Template
+License:             AllRightsReserved
+Author:              Snap Init
+Stability:           Experimental
+Category:            Web
+Build-type:          Simple
+Cabal-version:       >=1.2
+
+Executable snap-bench
+  hs-source-dirs: src
+  main-is: Main.hs
+
+  Build-depends:
+    base >= 4,
+    haskell98,
+    transformers,
+    bytestring,
+    snap-core,
+    snap-server,
+    heist,
+    filepath
+
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports
+
+  Extensions: OverloadedStrings

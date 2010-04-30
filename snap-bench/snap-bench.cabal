@@ -8,9 +8,27 @@ Category:            Web
 Build-type:          Simple
 Cabal-version:       >=1.2
 
-Executable snap-bench
+Executable pong-server
   hs-source-dirs: src
-  main-is: Main.hs
+  main-is: pong.hs
+
+  Build-depends:
+    base >= 4,
+    haskell98,
+    transformers,
+    bytestring,
+    snap-core,
+    snap-server,
+    heist,
+    filepath
+
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports
+
+  Extensions: OverloadedStrings
+
+Executable table-server
+  hs-source-dirs: src
+  main-is: table.hs
 
   Build-depends:
     base >= 4,

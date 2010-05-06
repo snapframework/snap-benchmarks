@@ -138,6 +138,35 @@ out and httperf said 12.6 req/s
 
 
 ----------------------------------------------------------------
+Apache+PHP
+----------------------------------------------------------------
+mightybyte@achilles ~/projects/snap/snap-benchmarks $ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 80 --rate 1000 --uri=/pong.php
+httperf --hog --client=0/1 --server=localhost --port=80 --uri=/pong.php --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 7
+
+Total: connections 1000 requests 120000 replies 101000 test-duration 10.559 s
+
+Connection rate: 94.7 conn/s (10.6 ms/conn, <=800 concurrent connections)
+Connection time [ms]: min 30.0 avg 4024.6 max 9589.4 median 3538.5 stddev 3414.1
+Connection time [ms]: connect 3555.3
+Connection length [replies/conn]: 101.000
+
+Request rate: 11364.4 req/s (0.1 ms/req)
+Request size [B]: 70.0
+
+Reply rate [replies/s]: min 2759.0 avg 8842.9 max 14926.9 stddev 8604.0 (2 samples)
+Reply time [ms]: response 89.9 transfer 0.0
+Reply size [B]: header 219.0 content 4.0 footer 0.0 (total 223.0)
+Reply status: 1xx=0 2xx=101000 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 0.32 system 10.18 (user 3.1% system 96.4% total 99.5%)
+Net I/O: 2861.6 KB/s (23.4*10^6 bps)
+
+Errors: total 1000 client-timo 0 socket-timo 0 connrefused 0 connreset 1000
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
+
+----------------------------------------------------------------
 Snap
 ----------------------------------------------------------------
 

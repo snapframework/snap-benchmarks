@@ -10,8 +10,9 @@ import           Snap.Util.FileServe
 import           Text.Templating.Heist
 
 site :: Snap ()
-site = dir "pong" (writeBS "PONG")
+site = dir "pong" (writeBS "PONG") <|> fileServe "static"
 
+pongServer :: Snap ()
 pongServer = --dir "pong" $
     modifyResponse $ setResponseBody (enumBS "PONG") .
         setContentType "text/plain" .
@@ -26,4 +27,4 @@ main = do
     httpServe "*" port "myserver"
         Nothing -- (Just "access.log")
         Nothing -- (Just "error.log")
-        pongServer
+        site

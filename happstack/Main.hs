@@ -1,9 +1,13 @@
 module Main where
 
+import Control.Monad
 import Happstack.Server
 import System.Environment
 
-handlers = dir "pong" $ anyRequest $ ok $ toResponse "PONG"
+handlers = msum
+    [dir "pong" $ anyRequest $ ok $ toResponse "PONG"
+    ,fileServe ["FiringGeometry.png"] "."
+    ]
 
 main = do
   args <- getArgs

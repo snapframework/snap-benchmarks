@@ -1,4 +1,29 @@
 ----------------------------------------------------------------
+Results Summary
+----------------------------------------------------------------
+pong returns a 4-byte response of "PONG"
+file is a request for a 50 KB png image
+
+Ruby on Rails
+  pong: 257.9 req/s
+  file: 360.3 req/s
+
+Grails
+  pong: 1317.9 req/s
+  file: 4361.7 req/s
+
+Happstack
+  pong: 8598.6 req/s
+  file: 20002.7 req/s
+
+Apache
+  pong: 11364.4 req/s
+  file: 4456.8 req/s
+
+Snap
+  pong: 23264.2 req/s
+
+----------------------------------------------------------------
 Ruby on Rails
 ----------------------------------------------------------------
 
@@ -55,6 +80,33 @@ Net I/O: 88.6 KB/s (0.7*10^6 bps)
 Errors: total 894 client-timo 0 socket-timo 890 connrefused 0 connreset 4
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
+-------- file
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000 --uri=/FiringGeometry.png
+httperf --hog --client=0/1 --server=localhost --port=8000 --uri=/FiringGeometry.png --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 106054 replies 106000 test-duration 294.328 s
+
+Connection rate: 3.4 conn/s (294.3 ms/conn, <=1000 concurrent connections)
+Connection time [ms]: min 265564.5 avg 277372.8 max 294301.7 median 0.0 stddev 5259.2
+Connection time [ms]: connect 18790.9
+Connection length [replies/conn]: 1000.000
+
+Request rate: 360.3 req/s (2.8 ms/req)
+Request size [B]: 80.0
+
+Reply rate [replies/s]: min 329.8 avg 359.7 max 409.2 stddev 15.3 (58 samples)
+Reply time [ms]: response 3046.2 transfer 0.7
+Reply size [B]: header 222.0 content 50991.0 footer 0.0 (total 51213.0)
+Reply status: 1xx=0 2xx=106000 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 7.80 system 269.89 (user 2.6% system 91.7% total 94.3%)
+Net I/O: 18039.8 KB/s (147.8*10^6 bps)
+
+Errors: total 894 client-timo 0 socket-timo 885 connrefused 0 connreset 9
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
+
 ----------------------------------------------------------------
 Grails
 ----------------------------------------------------------------
@@ -84,40 +136,57 @@ Net I/O: 211.1 KB/s (1.7*10^6 bps)
 Errors: total 1000 client-timo 0 socket-timo 74 connrefused 0 connreset 926
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
+-------- file
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000 --uri=/grails-bench/images/FiringGeometry.png
+httperf --hog --client=0/1 --server=localhost --port=8000 --uri=/grails-bench/images/FiringGeometry.png --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 30
+
+Total: connections 1000 requests 30011 replies 15303 test-duration 6.881 s
+
+Connection rate: 145.3 conn/s (6.9 ms/conn, <=1000 concurrent connections)
+Connection time [ms]: min 407.0 avg 4363.2 max 6818.9 median 3441.5 stddev 2108.2
+Connection time [ms]: connect 2444.7
+Connection length [replies/conn]: 43.229
+
+Request rate: 4361.7 req/s (0.2 ms/req)
+Request size [B]: 100.0
+
+Reply rate [replies/s]: min 1769.4 avg 1769.4 max 1769.4 stddev 0.0 (1 samples)
+Reply time [ms]: response 682.3 transfer 57.0
+Reply size [B]: header 230.0 content 50991.0 footer 0.0 (total 51221.0)
+Reply status: 1xx=0 2xx=15303 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 0.17 system 2.84 (user 2.4% system 41.3% total 43.7%)
+Net I/O: 111677.7 KB/s (914.9*10^6 bps)
+
+Errors: total 1000 client-timo 0 socket-timo 0 connrefused 0 connreset 1000
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
 
 ----------------------------------------------------------------
 Happstack
 ----------------------------------------------------------------
 
-mightybyte@achilles ~/projects/snap/bench $ httperf --hog --num-conns
-1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000
---uri=/pong
-httperf --hog --client=0/1 --server=localhost --port=8000 --uri=/pong
---rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000
---num-calls=1000 --burst-length=20
+mightybyte@achilles ~/projects/snap/bench $ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000 --uri=/pong
+httperf --hog --client=0/1 --server=localhost --port=8000 --uri=/pong --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
 Maximum connect burst length: 1
 
-Total: connections 1000 requests 1000000 replies 1000000 test-duration
-116.297 s
+Total: connections 1000 requests 1000000 replies 1000000 test-duration 116.297 s
 
-Connection rate: 8.6 conn/s (116.3 ms/conn, <=1000 concurrent
-connections)
-Connection time [ms]: min 100447.3 avg 113307.8 max 115707.2 median
-0.0 stddev 3521.7
+Connection rate: 8.6 conn/s (116.3 ms/conn, <=1000 concurrent connections)
+Connection time [ms]: min 100447.3 avg 113307.8 max 115707.2 median 0.0 stddev 3521.7
 Connection time [ms]: connect 1943.0
 Connection length [replies/conn]: 1000.000
 
 Request rate: 8598.6 req/s (0.1 ms/req)
 Request size [B]: 66.0
 
-Reply rate [replies/s]: min 8426.2 avg 8578.2 max 9999.1 stddev 332.9
-(23 samples)
+Reply rate [replies/s]: min 8426.2 avg 8578.2 max 9999.1 stddev 332.9 (23 samples)
 Reply time [ms]: response 1172.7 transfer 0.0
 Reply size [B]: header 165.0 content 4.0 footer 0.0 (total 169.0)
 Reply status: 1xx=0 2xx=1000000 3xx=0 4xx=0 5xx=0
 
-CPU time [s]: user 3.82 system 112.46 (user 3.3% system 96.7% total
-100.0%)
+CPU time [s]: user 3.82 system 112.46 (user 3.3% system 96.7% total 100.0%)
 Net I/O: 1973.3 KB/s (16.2*10^6 bps)
 
 Errors: total 0 client-timo 0 socket-timo 0 connrefused 0 connreset 0
@@ -135,6 +204,31 @@ Use `+RTS -Ksize -RTS' to increase it.
 NOTE 2: When running with "+RTS -N4", it never finished.  Broke
 out and httperf said 12.6 req/s
 ----------------------------------------------------------------
+
+-------- file
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000 --uri=/FiringGeometry.png  httperf --hog --client=0/1 --server=localhost --port=8000 --uri=/FiringGeometry.png --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 20000 replies 772 test-duration 1.000 s
+
+Connection rate: 1000.1 conn/s (1.0 ms/conn, <=2 concurrent connections)
+Connection time [ms]: min 0.3 avg 0.3 max 1.2 median 0.5 stddev 0.1
+Connection time [ms]: connect 0.0
+Connection length [replies/conn]: 1.000
+
+Request rate: 20002.7 req/s (0.0 ms/req)
+Request size [B]: 80.0
+
+Reply rate [replies/s]: min 0.0 avg 0.0 max 0.0 stddev 0.0 (0 samples)
+Reply time [ms]: response 0.3 transfer 0.1
+Reply size [B]: header 194.0 content 50991.0 footer 0.0 (total 51185.0)
+Reply status: 1xx=0 2xx=772 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 0.19 system 0.81 (user 19.0% system 81.0% total 100.0%)
+Net I/O: 40156.6 KB/s (329.0*10^6 bps)
+
+Errors: total 1000 client-timo 0 socket-timo 0 connrefused 0 connreset 1000
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
 
 ----------------------------------------------------------------
@@ -163,6 +257,32 @@ CPU time [s]: user 0.32 system 10.18 (user 3.1% system 96.4% total 99.5%)
 Net I/O: 2861.6 KB/s (23.4*10^6 bps)
 
 Errors: total 1000 client-timo 0 socket-timo 0 connrefused 0 connreset 1000
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
+-------- file
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8080 --rate 1000 --uri=/FiringGeometry.png
+httperf --hog --client=0/1 --server=localhost --port=8080 --uri=/FiringGeometry.png --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 98040 replies 82517 test-duration 21.998 s
+
+Connection rate: 45.5 conn/s (22.0 ms/conn, <=863 concurrent connections)
+Connection time [ms]: min 54.6 avg 4565.9 max 10325.4 median 3977.5 stddev 3604.0
+Connection time [ms]: connect 6920.7
+Connection length [replies/conn]: 101.000
+
+Request rate: 4456.8 req/s (0.2 ms/req)
+Request size [B]: 80.0
+
+Reply rate [replies/s]: min 0.0 avg 4125.8 max 10289.5 stddev 4362.4 (4 samples)
+Reply time [ms]: response 148.7 transfer 0.9
+Reply size [B]: header 302.0 content 50991.0 footer 0.0 (total 51293.0)
+Reply status: 1xx=0 2xx=82517 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 0.73 system 21.00 (user 3.3% system 95.5% total 98.8%)
+Net I/O: 188247.9 KB/s (1542.1*10^6 bps)
+
+Errors: total 1000 client-timo 0 socket-timo 183 connrefused 0 connreset 817
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
 
@@ -198,28 +318,28 @@ Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
 
 -------- With +RTS -A4M -N4 -qg0 -qb -g1
-mightybyte@achilles ~/projects/snap/bench $ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000 --uri=/pong
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8000 --rate 1000 --uri=/pong
 httperf --hog --client=0/1 --server=localhost --port=8000 --uri=/pong --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
 Maximum connect burst length: 3
 
-Total: connections 1000 requests 496000 replies 496000 test-duration 21.997 s
+Total: connections 1000 requests 859000 replies 859000 test-duration 36.924 s
 
-Connection rate: 45.5 conn/s (22.0 ms/conn, <=1000 concurrent connections)
-Connection time [ms]: min 4433.1 avg 11452.0 max 18392.4 median 11278.5 stddev 4496.3
-Connection time [ms]: connect 12226.8
+Connection rate: 27.1 conn/s (36.9 ms/conn, <=1000 concurrent connections)
+Connection time [ms]: min 20743.9 avg 29604.5 max 36220.1 median 29628.5 stddev 3712.7
+Connection time [ms]: connect 5261.5
 Connection length [replies/conn]: 1000.000
 
-Request rate: 22549.0 req/s (0.0 ms/req)
+Request rate: 23264.2 req/s (0.0 ms/req)
 Request size [B]: 66.0
 
-Reply rate [replies/s]: min 18745.7 avg 24800.9 max 27168.8 stddev 4049.9 (4 samples)
-Reply time [ms]: response 141.7 transfer 0.0
+Reply rate [replies/s]: min 23533.7 avg 23997.4 max 24569.9 stddev 358.8 (7 samples)
+Reply time [ms]: response 395.5 transfer 0.0
 Reply size [B]: header 106.0 content 4.0 footer 2.0 (total 112.0)
-Reply status: 1xx=0 2xx=496000 3xx=0 4xx=0 5xx=0
+Reply status: 1xx=0 2xx=859000 3xx=0 4xx=0 5xx=0
 
-CPU time [s]: user 1.91 system 20.06 (user 8.7% system 91.2% total 99.9%)
-Net I/O: 3875.6 KB/s (31.7*10^6 bps)
+CPU time [s]: user 2.03 system 34.86 (user 5.5% system 94.4% total 99.9%)
+Net I/O: 3998.5 KB/s (32.8*10^6 bps)
 
-Errors: total 504 client-timo 0 socket-timo 504 connrefused 0 connreset 0
+Errors: total 141 client-timo 0 socket-timo 141 connrefused 0 connreset 0
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 

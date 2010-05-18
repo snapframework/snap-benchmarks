@@ -25,4 +25,4 @@ config.log_level = :fatal
 # config.action_mailer.raise_delivery_errors = false
 
 # Enable threaded mode
-# config.threadsafe!
+config.threadsafe!

@@ -1,0 +1,152 @@
+-- Go to http://code.google.com/apis/chart/docs/chart_playground.html and
+-- paste these chart descriptions into the parameters box to generate charts.
+
+cht=bvg
+chs=500x282
+chf=bg,s,eeeeee00
+chd=t:258,796,8578,8843,27511
+chma=80,10,50,50
+chco=3263a2
+    3263a2
+    3263a2
+    3263a2
+    f7b03c
+chds=0,25000
+chbh=60
+chxt=x,y
+chxl=0:
+    RoR
+    Grails
+    Happstack
+    Apache/PHP
+    Snap
+    1:
+    0
+    5000
+    10000
+    15000
+    20000
+    25000
+chxp=1,0
+
+----------------------
+-- If we want the bars to have gradients, we have to use a stacked bar
+-- with the Snap bar in a different series by itself.
+----------------------
+
+-- pong benchmark
+-- old chart
+cht=bvs
+chs=400x282
+chd=t:258,796,8578,8843,0
+    0,0,0,0,23997
+chma=50,10,50,50
+chco=3263a2,f7b03c
+chf=bg,s,eeeeee00
+    b0,lg,-100,3263a2,0.1,98c1f6,1
+    b1,lg,-100,f7b03c,0.3,fed694,1
+chds=0,25000
+chbh=60
+chxt=x,y
+chxl=0:
+    RoR
+    Grails
+    Happstack
+    Apache/PHP
+    Snap
+    1:
+    0
+    5000
+    10000
+    15000
+    20000
+    25000
+chxp=1,0
+
+-- new chart
+cht=bvs
+chs=400x282
+chd=t:258,796,8578,8843,0
+    0,0,0,0,27511
+chma=50,10,50,50
+chco=3263a2,f7b03c
+chf=bg,s,eeeeee00
+    b0,lg,-100,3263a2,0.1,98c1f6,1
+    b1,lg,-100,f7b03c,0.3,fed694,1
+chds=0,30000
+chbh=60
+chxt=x,y
+chxl=0:
+    RoR
+    Grails
+    Happstack
+    Apache/PHP
+    Snap
+    1:
+    0
+    5000
+    10000
+    15000
+    20000
+    25000
+    30000
+chxp=1,0
+
+
+
+-- file benchmark
+-- old chart
+cht=bvs
+chs=400x282
+chd=t:360,1769,2455,4126,0
+    0,0,0,0,7206
+chma=50,10,50,50
+chco=3263a2,f7b03c
+chf=bg,s,eeeeee00
+    b0,lg,-100,3263a2,0.1,98c1f6,1
+    b1,lg,-100,f7b03c,0.3,fed694,1
+chds=0,8000
+chbh=60
+chxt=x,y
+chxl=0:
+    RoR
+    Grails
+    Happstack
+    Apache
+    Snap
+    1:
+    0
+    2000
+    4000
+    6000
+    8000
+chxp=1,0
+
+-- new chart
+cht=bvs
+chs=400x282
+chd=t:360,1769,2455,4126,0
+    0,0,0,0,8941
+chma=50,10,50,50
+chco=3263a2,f7b03c
+chf=bg,s,eeeeee00
+    b0,lg,-100,3263a2,0.1,98c1f6,1
+    b1,lg,-100,f7b03c,0.3,fed694,1
+chds=0,10000
+chbh=60
+chxt=x,y
+chxl=0:
+    RoR
+    Grails
+    Happstack
+    Apache
+    Snap
+    1:
+    0
+    2000
+    4000
+    6000
+    8000
+    10000
+chxp=1,0
+

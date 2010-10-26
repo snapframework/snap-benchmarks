@@ -7,10 +7,10 @@ import           Snap.Http.Server
 import           Snap.Iteratee
 import           Snap.Types
 import           Snap.Util.FileServe
-import           Text.Templating.Heist
 
 site :: Snap ()
 site = dir "pong" (writeBS "PONG") <|> fileServe "static"
+--site = writeBS "PONG"
 
 pongServer :: Snap ()
 pongServer = --dir "pong" $
@@ -22,9 +22,9 @@ main :: IO ()
 main = do
     args <- getArgs
     let port = case args of
-                   []  -> 8000
+                   []  -> 3000
                    p:_ -> read p
-    httpServe "*" port "myserver"
-        Nothing -- (Just "access.log")
-        Nothing -- (Just "error.log")
-        site
+        config = setPort port $
+                 setAccessLog Nothing $
+                 defaultConfig
+    httpServe config site

@@ -20,10 +20,9 @@ Executable pong-server
     bytestring,
     snap-core,
     snap-server,
-    heist,
     filepath
 
-  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
 
   Extensions: OverloadedStrings
 
@@ -39,9 +38,8 @@ Executable table-server
     bytestring,
     snap-core,
     snap-server,
-    heist,
     filepath
 
-  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
 
   Extensions: OverloadedStrings

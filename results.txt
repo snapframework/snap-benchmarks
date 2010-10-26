@@ -20,15 +20,15 @@ file is a request for a 50 KB png image
 Average Reply Rates         
           
 test RoR Grails  Happstack Apache  Snap
-pong 258    796       8578   8843  23997
-file 360   1769       2455   4126   7206
+pong 258    796       8578   8843  27511
+file 360   1769       2455   4126   8941
           
           
 Standard Deviations         
           
 test RoR  Grails  Happstack Apache  Snap
-pong  4.1    565        332   8604  358.8
-file 15.3      0       3254   4362  185.3
+pong  4.1    565        332   8604  690.1
+file 15.3      0       3254   4362  557.5
 
 ----------------------------------------------------------------
 Ruby on Rails
@@ -383,4 +383,35 @@ Net I/O: 360189.3 KB/s (2950.7*10^6 bps)
 
 Errors: total 483 client-timo 0 socket-timo 0 connrefused 0 connreset 483
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
+----------------------------------------------------------------
+Node.js
+----------------------------------------------------------------
+
+--------
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8124 --rate 1000 --uri=/pong
+httperf --hog --client=0/1 --server=localhost --port=8124 --uri=/pong --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 963000 replies 963000 test-duration 36.391 s
+
+Connection rate: 27.5 conn/s (36.4 ms/conn, <=1000 concurrent connections)
+Connection time [ms]: min 29995.9 avg 33252.7 max 35598.3 median 32962.5 stddev 1341.9
+Connection time [ms]: connect 2369.8
+Connection length [replies/conn]: 1000.000
+
+Request rate: 26462.7 req/s (0.0 ms/req)
+Request size [B]: 66.0
+
+Reply rate [replies/s]: min 25483.1 avg 26476.2 max 26785.7 stddev 456.8 (7 samples)
+Reply time [ms]: response 629.4 transfer 0.0
+Reply size [B]: header 97.0 content 4.0 footer 2.0 (total 103.0)
+Reply status: 1xx=0 2xx=963000 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 1.27 system 35.12 (user 3.5% system 96.5% total 100.0%)
+Net I/O: 4315.7 KB/s (35.4*10^6 bps)
+
+Errors: total 37 client-timo 0 socket-timo 37 connrefused 0 connreset 0
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
 

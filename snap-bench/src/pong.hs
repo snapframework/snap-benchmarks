@@ -9,8 +9,8 @@ import           Snap.Types
 import           Snap.Util.FileServe
 
 site :: Snap ()
-site = dir "pong" (writeBS "PONG") <|> fileServe "static"
 --site = writeBS "PONG"
+site = fileServe "static"
 
 pongServer :: Snap ()
 pongServer = --dir "pong" $

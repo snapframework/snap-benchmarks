@@ -26,6 +26,24 @@ Executable pong-server
 
   Extensions: OverloadedStrings
 
+Executable file-server
+  hs-source-dirs: src
+  main-is: file.hs
+
+  Build-depends:
+    base >= 4,
+    haskell98,
+    transformers,
+    monads-fd,
+    bytestring,
+    snap-core,
+    snap-server,
+    filepath
+
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+
+  Extensions: OverloadedStrings
+
 Executable table-server
   hs-source-dirs: src
   main-is: table.hs

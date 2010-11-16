@@ -9,7 +9,7 @@ import           Snap.Types
 import           Snap.Util.FileServe
 
 site :: Snap ()
-site = writeBS "PONG"
+site = fileServe "static"
 
 main :: IO ()
 main = do
@@ -18,6 +18,6 @@ main = do
                    []  -> 3000
                    p:_ -> read p
         config = setPort port $
-                 setAccessLog Nothing $
+--                 setAccessLog Nothing $
                  defaultConfig
     httpServe config site

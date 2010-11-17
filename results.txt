@@ -19,16 +19,16 @@ file is a request for a 50 KB png image
 
 Average Reply Rates         
           
-test RoR Grails  Happstack Apache  Node.js Snap
-pong 258    796       8578   8843  22733   35136
-file 360   1769       2455   4126  4540    11099
+test RoR Grails  Happstack Apache  Node.js Snap-log Snap-no-log
+pong 258    796       8578   8843  22733   17800    35316
+file 360   1769       2455   4126  4540    6152     10832
           
           
 Standard Deviations         
           
-test RoR  Grails  Happstack Apache Node.js Snap
-pong  4.1    565        332   8604 380     373.2
-file 15.3      0       3254   4362 514     331.5
+test RoR  Grails  Happstack Apache Node.js Snap-log Snap-no-log
+pong  4.1    565        332   8604 380     1788     347
+file 15.3      0       3254   4362 514     495      355
 
 ----------------------------------------------------------------
 Ruby on Rails

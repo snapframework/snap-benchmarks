@@ -18,6 +18,6 @@ main = do
                    []  -> 3000
                    p:_ -> read p
         config = setPort port $
---                 setAccessLog Nothing $
+                 setAccessLog Nothing $
                  defaultConfig
     httpServe config site

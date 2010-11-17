@@ -335,6 +335,32 @@ Net I/O: 5695.0 KB/s (46.7*10^6 bps)
 Errors: total 207 client-timo 0 socket-timo 207 connrefused 0 connreset 0
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
+-------- pong with GHC 6.12.3 and +RTS -A4M -N4 (access logging turned off)
+$ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 3000 --rate 1000 --uri=/pong
+httperf --hog --client=0/1 --server=localhost --port=3000 --uri=/pong --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
+Maximum connect burst length: 1
+
+Total: connections 1000 requests 774000 replies 774000 test-duration 23.509 s
+
+Connection rate: 42.5 conn/s (23.5 ms/conn, <=1000 concurrent connections)
+Connection time [ms]: min 8788.2 avg 17192.8 max 22697.7 median 18653.5 stddev 4570.4
+Connection time [ms]: connect 7293.7
+Connection length [replies/conn]: 1000.000
+
+Request rate: 32923.6 req/s (0.0 ms/req)
+Request size [B]: 66.0
+
+Reply rate [replies/s]: min 32574.7 avg 33195.8 max 33932.3 stddev 558.2 (4 samples)
+Reply time [ms]: response 272.1 transfer 0.0
+Reply size [B]: header 104.0 content 4.0 footer 2.0 (total 110.0)
+Reply status: 1xx=0 2xx=774000 3xx=0 4xx=0 5xx=0
+
+CPU time [s]: user 2.28 system 21.23 (user 9.7% system 90.3% total 100.0%)
+Net I/O: 5594.4 KB/s (45.8*10^6 bps)
+
+Errors: total 226 client-timo 0 socket-timo 226 connrefused 0 connreset 0
+Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
 
 -------- pong with GHC 7.0.1 and +RTS -A4M -N4 (access logging turned on)
 $ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 3000 --rate 1000 --uri=/pong

@@ -20,14 +20,14 @@ file is a request for a 50 KB png image
 Average Reply Rates         
           
 test RoR Grails  Happstack Apache  Node.js Snap-log Snap-no-log
-pong 258    796      16299   8843  22733   17800    35316
+pong 258    796      16299   9133  22733   17800    35316
 file 360   1769       7554   4126  4540    6152     10832
           
           
 Standard Deviations         
           
 test RoR  Grails  Happstack Apache Node.js Snap-log Snap-no-log
-pong  4.1    565        475   8604 380     1788     347
+pong  4.1    565        475   6014 380     1788     347
 file 15.3      0        311   4362 514     495      355
 
 ----------------------------------------------------------------
@@ -234,32 +234,33 @@ Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
 
 
 ----------------------------------------------------------------
-Apache+PHP (2.2.16, 5.2.14)
+Apache+PHP (2.2.17, 5.3.3)
 ----------------------------------------------------------------
 $ httperf --hog --num-conns 1000 --num-calls 1000 --burst-length 20 --port 8080 --rate 1000 --uri=/pong.php
 httperf --hog --client=0/1 --server=localhost --port=8080 --uri=/pong.php --rate=1000 --send-buffer=4096 --recv-buffer=16384 --num-conns=1000 --num-calls=1000 --burst-length=20
-Maximum connect burst length: 5
+Maximum connect burst length: 7
 
-Total: connections 1000 requests 120000 replies 101000 test-duration 10.250 s
+Total: connections 1000 requests 120000 replies 101000 test-duration 10.486 s
 
-Connection rate: 97.6 conn/s (10.3 ms/conn, <=806 concurrent connections)
-Connection time [ms]: min 29.3 avg 3618.3 max 9326.7 median 3619.5 stddev 2940.4
-Connection time [ms]: connect 2992.4
+Connection rate: 95.4 conn/s (10.5 ms/conn, <=846 concurrent connections)
+Connection time [ms]: min 36.0 avg 4018.9 max 9500.7 median 3712.5 stddev 3030.1
+Connection time [ms]: connect 3311.0
 Connection length [replies/conn]: 101.000
 
-Request rate: 11707.0 req/s (0.1 ms/req)
+Request rate: 11444.3 req/s (0.1 ms/req)
 Request size [B]: 70.0
 
-Reply rate [replies/s]: min 4680.2 avg 9586.4 max 14492.6 stddev 6938.4 (2 samples)
-Reply time [ms]: response 119.1 transfer 0.0
-Reply size [B]: header 222.0 content 4.0 footer 0.0 (total 226.0)
+Reply rate [replies/s]: min 4880.0 avg 9133.1 max 13386.2 stddev 6014.8 (2 samples)
+Reply time [ms]: response 135.8 transfer 0.0
+Reply size [B]: header 220.0 content 4.0 footer 0.0 (total 224.0)
 Reply status: 1xx=0 2xx=101000 3xx=0 4xx=0 5xx=0
 
-CPU time [s]: user 0.43 system 9.21 (user 4.2% system 89.8% total 94.0%)
-Net I/O: 2976.8 KB/s (24.4*10^6 bps)
+CPU time [s]: user 0.35 system 9.45 (user 3.3% system 90.1% total 93.5%)
+Net I/O: 2891.2 KB/s (23.7*10^6 bps)
 
 Errors: total 1000 client-timo 0 socket-timo 0 connrefused 0 connreset 1000
 Errors: fd-unavail 0 addrunavail 0 ftab-full 0 other 0
+
 
 
 -------- file

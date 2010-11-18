@@ -1,3 +1,3 @@
 <?php
-  printf("PONG");
+  echo "PONG";
 ?>

@@ -42,4 +42,4 @@ main = do
     let port = case args of
                    []  -> 8000
                    p:_ -> read p
-    httpServe (setPort port defaultConfig) tableServer
+    httpServe (addListen (ListenHttp "0.0.0.0" port) defaultConfig) tableServer

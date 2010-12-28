@@ -17,7 +17,7 @@ main = do
     let port = case args of
                    []  -> 3000
                    p:_ -> read p
-        config = setPort port $
+        config = addListen (ListenHttp "0.0.0.0" port) $
                  setAccessLog Nothing $
                  defaultConfig
     httpServe config site

@@ -50,6 +50,7 @@ Executable table-server
 
   Build-depends:
     base >= 4,
+    blaze-builder,
     haskell98,
     transformers,
     mtl,

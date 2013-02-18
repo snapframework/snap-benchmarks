@@ -14,7 +14,6 @@ Executable pong-server
 
   Build-depends:
     base >= 4,
-    haskell98,
     transformers,
     mtl,
     bytestring,
@@ -32,7 +31,6 @@ Executable file-server
 
   Build-depends:
     base >= 4,
-    haskell98,
     transformers,
     mtl,
     bytestring,
@@ -51,7 +49,6 @@ Executable table-server
   Build-depends:
     base >= 4,
     blaze-builder,
-    haskell98,
     transformers,
     mtl,
     bytestring,

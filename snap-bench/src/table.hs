@@ -2,7 +2,7 @@
 
 module Main where
 
-import           System
+import           System.Environment
 import           Blaze.ByteString.Builder
 import           Blaze.ByteString.Builder.Char8
 import           Control.Applicative
@@ -11,7 +11,7 @@ import qualified Data.ByteString.Char8 as BS
 import           Data.Monoid
 import           Snap.Http.Server
 import           Snap.Iteratee
-import           Snap.Types
+import           Snap.Core
 import           Snap.Util.FileServe
 
 
@@ -60,4 +60,4 @@ main = do
     let port = case args of
                    []  -> 8000
                    p:_ -> read p
-    httpServe (addListen (ListenHttp "0.0.0.0" port) defaultConfig) tableServer
+    httpServe (setBind "0.0.0.0" . setPort port $ defaultConfig) tableServer

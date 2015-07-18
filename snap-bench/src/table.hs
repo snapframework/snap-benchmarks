@@ -10,7 +10,7 @@ import           Control.Monad.Trans
 import qualified Data.ByteString.Char8 as BS
 import           Data.Monoid
 import           Snap.Http.Server
-import           Snap.Iteratee
+import           Snap.Http.Server.Config
 import           Snap.Core
 import           Snap.Util.FileServe
 
@@ -53,7 +53,7 @@ tableServer = do
                            , tableBody 1
                            , fromByteString "</table></body></html>" ]
 
-    
+
 main :: IO ()
 main = do
     args <- getArgs

@@ -4,7 +4,7 @@ import           System.Environment
 import           Control.Applicative
 import           Control.Monad.Trans
 import           Snap.Http.Server
-import           Snap.Iteratee
+import           Snap.Http.Server.Config
 import           Snap.Core
 import           Snap.Util.FileServe
 

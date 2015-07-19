@@ -2,6 +2,7 @@
 
 module Main where
 
+import           Data.Monoid
 import           System.Environment
 import           Blaze.ByteString.Builder
 import           Blaze.ByteString.Builder.Char8

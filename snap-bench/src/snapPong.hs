@@ -1,15 +1,12 @@
 module Main where
 
 import           System.Environment
-import           Control.Applicative
-import           Control.Monad.Trans
 import           Snap.Http.Server
 import           Snap.Http.Server.Config
 import           Snap.Core
-import           Snap.Util.FileServe
 
 site :: Snap ()
-site = serveFile "static"
+site = writeBS "PONG"
 
 main :: IO ()
 main = do

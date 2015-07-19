@@ -1,15 +1,13 @@
 module Main where
 
 import           System.Environment
-import           Control.Applicative
-import           Control.Monad.Trans
 import           Snap.Http.Server
 import           Snap.Http.Server.Config
 import           Snap.Core
 import           Snap.Util.FileServe
 
 site :: Snap ()
-site = writeBS "PONG"
+site = serveFile "static/FiringGeometry.png"
 
 main :: IO ()
 main = do

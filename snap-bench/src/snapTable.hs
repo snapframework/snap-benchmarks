@@ -5,14 +5,9 @@ module Main where
 import           System.Environment
 import           Blaze.ByteString.Builder
 import           Blaze.ByteString.Builder.Char8
-import           Control.Applicative
-import           Control.Monad.Trans
-import qualified Data.ByteString.Char8 as BS
-import           Data.Monoid
 import           Snap.Http.Server
 import           Snap.Http.Server.Config
 import           Snap.Core
-import           Snap.Util.FileServe
 
 
 tdOp, tdCl, trOp, trCl :: Builder
@@ -58,6 +53,6 @@ main :: IO ()
 main = do
     args <- getArgs
     let port = case args of
-                   []  -> 8000
+                   []  -> 3000
                    p:_ -> read p
     httpServe (setBind "0.0.0.0" . setPort port $ defaultConfig) tableServer

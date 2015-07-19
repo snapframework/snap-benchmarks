@@ -8,54 +8,111 @@ Category:            Web
 Build-type:          Simple
 Cabal-version:       >=1.2
 
-Executable pong-server
-  hs-source-dirs: src
-  main-is: pong.hs
+-- Executable snap-pong-1
+--   hs-source-dirs: src
+--   main-is: snapPong.hs
+--   Build-depends:
+--     base >= 4,
+--     snap-core,
+--     snap-server >= 1.0
+--   ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+--   Extensions: OverloadedStrings
+--
+-- Executable snap-file-1
+--   hs-source-dirs: src
+--   main-is: snapFile.hs
+--   Build-depends:
+--     base >= 4,
+--     snap-core,
+--     snap-server >= 1.0,
+--     filepath
+--   ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+--   Extensions: OverloadedStrings
+--
+-- Executable snap-table-1
+--   hs-source-dirs: src
+--   main-is: snapTable.hs
+--   Build-depends:
+--     base >= 4,
+--     blaze-builder,
+--     bytestring,
+--     snap-core,
+--     snap-server >= 1.0
+--   ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+--   Extensions: OverloadedStrings
 
+Executable snap-file-0
+  hs-source-dirs: src
+  main-is: snapFile.hs
   Build-depends:
     base >= 4,
-    transformers,
-    mtl,
-    bytestring,
     snap-core,
-    snap-server,
+    snap-server < 1.0,
     filepath
-
   ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
-
   Extensions: OverloadedStrings
 
-Executable file-server
+Executable snap-pong-0
   hs-source-dirs: src
-  main-is: file.hs
-
+  main-is: snapPong.hs
   Build-depends:
     base >= 4,
-    transformers,
-    mtl,
-    bytestring,
     snap-core,
-    snap-server,
-    filepath
-
+    snap-server < 1.0
   ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
-
   Extensions: OverloadedStrings
 
-Executable table-server
+Executable snap-table-0
   hs-source-dirs: src
-  main-is: table.hs
-
+  main-is: snapTable.hs
   Build-depends:
     base >= 4,
     blaze-builder,
-    transformers,
-    mtl,
     bytestring,
     snap-core,
-    snap-server,
-    filepath
+    snap-server < 1.0
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+  Extensions: OverloadedStrings
 
+
+Executable warp-pong
+  hs-source-dirs: src
+  main-is: warpPong.hs
+  build-depends:
+    base >= 4,
+    warp >= 3.0.13,
+    wai >= 3.0.3,
+    blaze-builder,
+    http-types
   ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
 
-  Extensions: OverloadedStrings
+
+Executable warp-table
+  hs-source-dirs: src
+  main-is: warpTable.hs
+  build-depends:
+    base >= 4,
+    warp >= 3.0.13,
+    wai >= 3.0.3,
+    blaze-builder,
+    http-types
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+
+Executable warp-file
+  hs-source-dirs: src
+  main-is: warpFile.hs
+  build-depends:
+    base >= 4,
+    warp >= 3.0.13,
+    wai >= 3.0.3,
+    blaze-builder,
+    http-types
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
+
+Executable happstack-pong
+  hs-source-dirs: src
+  main-is: happstackPong.hs
+  build-depends:
+    base >= 4,
+    happstack-server >= 7.4.4
+  ghc-options: -O2 -Wall -fwarn-tabs -funbox-strict-fields -threaded -fno-warn-unused-imports -rtsopts
